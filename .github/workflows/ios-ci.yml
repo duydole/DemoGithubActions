@@ -26,17 +26,17 @@ jobs:
       # Build dự án iOS
       - name: Build iOS app
         run: |
-          xcodebuild -project DemoGithubActions.xcodeproj \\
-                     -scheme DemoGithubActions \\
-                     -sdk iphonesimulator \\
-                     -destination 'platform=iOS Simulator,name=iPhone 14' \\
+          xcodebuild -project DemoGithubActions.xcodeproj \
+                     -scheme DemoGithubActions \
+                     -sdk iphonesimulator \
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \
                      clean build
 
       # Chạy unit tests (nếu có)
       - name: Run unit tests
         run: |
-          xcodebuild -project DemoGithubActions.xcodeproj \\
-                     -scheme DemoGithubActions \\
-                     -sdk iphonesimulator \\
-                     -destination 'platform=iOS Simulator,name=iPhone 14' \\
+          xcodebuild -project DemoGithubActions.xcodeproj \
+                     -scheme DemoGithubActions \
+                     -sdk iphonesimulator \
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \
                      test
