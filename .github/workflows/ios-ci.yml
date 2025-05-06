@@ -1,0 +1,42 @@
+name: iOS CI
+
+# Kích hoạt workflow khi push hoặc pull request vào nhánh main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    # Sử dụng runner macOS mới nhất
+    runs-on: macos-latest
+
+    steps:
+      # Clone mã nguồn từ repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Cài đặt phiên bản Xcode cụ thể
+      - name: Select Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.0.app
+
+      # Build dự án iOS
+      - name: Build iOS app
+        run: |
+          xcodebuild -project DemoGithubActions.xcodeproj \\
+                     -scheme DemoGithubActions \\
+                     -sdk iphonesimulator \\
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \\
+                     clean build
+
+      # Chạy unit tests (nếu có)
+      - name: Run unit tests
+        run: |
+          xcodebuild -project DemoGithubActions.xcodeproj \\
+                     -scheme DemoGithubActions \\
+                     -sdk iphonesimulator \\
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \\
+                     test
