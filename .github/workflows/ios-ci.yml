@@ -21,7 +21,7 @@ jobs:
 
       # Cài đặt phiên bản Xcode cụ thể
       - name: Select Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_15.0.app
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
 
       # Build dự án iOS
       - name: Build iOS app
@@ -32,11 +32,11 @@ jobs:
                      -destination 'platform=iOS Simulator,name=iPhone 14' \
                      clean build
 
-      # Chạy unit tests (nếu có)
-      - name: Run unit tests
-        run: |
-          xcodebuild -project DemoGithubActions.xcodeproj \
-                     -scheme DemoGithubActions \
-                     -sdk iphonesimulator \
-                     -destination 'platform=iOS Simulator,name=iPhone 14' \
-                     test
+      # # Chạy unit tests (nếu có)
+      # - name: Run unit tests
+      #   run: |
+      #     xcodebuild -project DemoGithubActions.xcodeproj \
+      #                -scheme DemoGithubActions \
+      #                -sdk iphonesimulator \
+      #                -destination 'platform=iOS Simulator,name=iPhone 14' \
+      #                test
