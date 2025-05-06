@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     # Sử dụng runner macOS mới nhất
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
       # Clone mã nguồn từ repository
@@ -32,11 +32,11 @@ jobs:
                      -destination 'platform=iOS Simulator,name=iPhone 14' \
                      clean build
 
-      # # Chạy unit tests (nếu có)
-      # - name: Run unit tests
-      #   run: |
-      #     xcodebuild -project DemoGithubActions.xcodeproj \
-      #                -scheme DemoGithubActions \
-      #                -sdk iphonesimulator \
-      #                -destination 'platform=iOS Simulator,name=iPhone 14' \
-      #                test
+      # Chạy unit tests (nếu có)
+      - name: Run unit tests
+        run: |
+          xcodebuild -project DemoGithubActions.xcodeproj \
+                     -scheme DemoGithubActions \
+                     -sdk iphonesimulator \
+                     -destination 'platform=iOS Simulator,name=iPhone 14' \
+                     test
