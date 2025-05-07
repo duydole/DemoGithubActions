@@ -29,8 +29,8 @@ jobs:
         run: bundle install
 
       # Cài đặt phiên bản Xcode cụ thể
-      - name: Select Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+      # - name: Select Xcode version
+      #   run: sudo xcode-select -s /Applications/Xcode_16.0.app
 
       - name: Run Fastlane tests
         run: bundle exec fastlane test
