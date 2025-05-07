@@ -1,6 +1,6 @@
 name: iOS CI
 
-# Kích hoạt workflow khi push hoặc pull request vào nhánh main
+# Trigger the workflow when push or having new PR to main branch
 on:
   push:
     branches:
@@ -11,32 +11,31 @@ on:
 
 jobs:
   build:
-    # Sử dụng runner macOS mới nhất
+    # Specify macos version
     runs-on: macos-15
 
     steps:
-      # Clone mã nguồn từ repository
+      # Clone the source code
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Select the Ruby version
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # Chọn phiên bản Ruby phù hợp
-          # bundler-cache: true # Cache gem để tăng tốc
-
+          ruby-version: '3.2'
+      
+      # Install fastlane to CI machine
       - name: Install dependencies
         run: bundle install
-
-      # Cài đặt phiên bản Xcode cụ thể
-      # - name: Select Xcode version
-      #   run: sudo xcode-select -s /Applications/Xcode_16.0.app
-
+    
+      # Run lane test
       - name: Run Fastlane tests
         run: bundle exec fastlane test
         env:
-          DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer # Thay bằng phiên bản Xcode phù hợp
-
+          DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
+     
+      # Run lane build simulator
       - name: Build app
         run: bundle exec fastlane build_simulator
         env:
