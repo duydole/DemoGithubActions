@@ -38,6 +38,6 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer # Thay bằng phiên bản Xcode phù hợp
 
       - name: Build app
-        run: bundle exec fastlane build
+        run: bundle exec fastlane build_simulator
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
