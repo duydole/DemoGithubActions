@@ -24,12 +24,16 @@ platform :ios do
     )
   end
 
-  desc "Build app"
-  lane :build do
+  desc "Build for iOS Simulator"
+  lane :build_simulator do
     gym(
-      scheme: "DemoGithubActions",
-      export_method: "development",
-      clean: true
+      scheme: "DemoGithubActions", # Thay bằng scheme của bạn
+      clean: true,
+      skip_codesigning: true,
+      skip_archive: true,
+      destination: "platform=iOS Simulator,name=iPhone 16,OS=18.2",
+      configuration: "Debug",
+      xcargs: "CODE_SIGN_IDENTITY='' CODE_SIGNING_REQUIRED=NO"
     )
   end
 end
