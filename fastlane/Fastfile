@@ -48,17 +48,20 @@ platform :ios do
     )
     match(
       type: "appstore",
-      app_identifier: "com.color.ninja",
+      app_identifier: "com.livepayments.DemoGithubActions",
       api_key: api_key,
-      password: ENV["MATCH_PASSWORD"]
+      verbose: true
     )
     gym(
-      scheme: "ColorNinja",
+      scheme: "DemoGithubActions",
       export_method: "app-store",
       output_directory: "./build",
-      output_name: "ColorNinja.ipa",
+      output_name: "DemoGithubActions.ipa",
       clean: true
     )
-    pilot(api_key: api_key)
+    pilot(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
   end
 end
