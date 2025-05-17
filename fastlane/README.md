@@ -39,6 +39,14 @@ Build for iOS Simulator
 
 Match App Store
 
+### ios gym_app_store
+
+```sh
+[bundle exec] fastlane ios gym_app_store
+```
+
+Gym App Store
+
 ### ios build_and_tf
 
 ```sh
