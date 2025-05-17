@@ -42,10 +42,10 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
       # Run lane build and tf
-      # - name: Build and TF
-      #   run: bundle exec fastlane build_and_tf
-      #   env:
-      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+      - name: Build and TF
+        run: bundle exec fastlane build_and_tf
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
