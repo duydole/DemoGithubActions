@@ -49,13 +49,7 @@ jobs:
 
       # Match app store
       - name: Match App Store
-        run: bundle exec fastlane match_app_store
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
-
-      # Gym app store
-      - name: Gym App Store
-        run: bundle exec fastlane gym_app_store
+        run: bundle exec fastlane match_and_gym
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 

@@ -31,21 +31,13 @@ Run tests
 
 Build for iOS Simulator
 
-### ios match_app_store
+### ios match_and_gym
 
 ```sh
-[bundle exec] fastlane ios match_app_store
+[bundle exec] fastlane ios match_and_gym
 ```
 
-Match App Store
-
-### ios gym_app_store
-
-```sh
-[bundle exec] fastlane ios gym_app_store
-```
-
-Gym App Store
+Match & Gym App Store
 
 ### ios build_and_tf
 
