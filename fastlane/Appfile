@@ -1,4 +1,4 @@
-app_identifier("com.livepayments.DemoGithubActions")
+app_identifier("com.livepayments.DemoGithubActions2")
 apple_id("iosdev2024@gmail.com")
 
 # For more information about the Appfile, see:
