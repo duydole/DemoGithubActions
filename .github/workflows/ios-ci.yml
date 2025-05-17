@@ -53,6 +53,12 @@ jobs:
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
+      # Gym app store
+      - name: Gym App Store
+        run: bundle exec fastlane gym_app_store
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
