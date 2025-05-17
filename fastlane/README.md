@@ -31,6 +31,14 @@ Run tests
 
 Build for iOS Simulator
 
+### ios match_app_store
+
+```sh
+[bundle exec] fastlane ios match_app_store
+```
+
+Match App Store
+
 ### ios build_and_tf
 
 ```sh
