@@ -25,6 +25,14 @@ jobs:
         with:
           ruby-version: '3.2'
       
+      - name: Clear Fastlane cache
+        run: |
+          rm -rf ~/.fastlane
+          rm -rf ./fastlane/report.xml
+          rm -rf ./fastlane/Preview.html
+          rm -rf ./fastlane/test_output
+        working-directory: ./DemoGithubActions # Thư mục chứa Fastlane
+        
       # Install fastlane to CI machine
       - name: Install dependencies
         run: bundle install

@@ -48,7 +48,7 @@ platform :ios do
     )
     match(
       type: "appstore",
-      app_identifier: "com.livepayments.DemoGithubActions",
+      app_identifier: "com.livepayments.DemoGithubActions2",
       api_key: api_key,
       verbose: true
     )
