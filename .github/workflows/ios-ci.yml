@@ -24,36 +24,28 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-      
-      - name: Clear Fastlane cache
-        run: |
-          rm -rf ~/.fastlane
-          rm -rf ./fastlane/report.xml
-          rm -rf ./fastlane/Preview.html
-          rm -rf ./fastlane/test_output
-        working-directory: ./DemoGithubActions # Thư mục chứa Fastlane
-        
+              
       # Install fastlane to CI machine
       - name: Install dependencies
         run: bundle install
     
-      # # Run lane test
-      # - name: Run Fastlane tests
-      #   run: bundle exec fastlane test
-      #   env:
-      #     DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
-     
-      # # Run lane build simulator
-      # - name: Build app
-      #   run: bundle exec fastlane build_simulator
-      #   env:
-      #     DEVELOPER_DIR: /Applications/Xcode_16.0.app/Contents/Developer
-
-      # Run lane build and tf
-      - name: Build and TF
-        run: bundle exec fastlane build_and_tf
+      # Run lane test
+      - name: Run Fastlane tests
+        run: bundle exec fastlane test
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+     
+      # Run lane build simulator
+      - name: Build app
+        run: bundle exec fastlane build_simulator
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+
+      # Run lane build and tf
+      # - name: Build and TF
+      #   run: bundle exec fastlane build_and_tf
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
