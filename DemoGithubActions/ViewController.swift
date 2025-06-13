@@ -7,6 +7,12 @@
 
 import UIKit
 
+class Math {
+    func addTwoNumbers(_ a: Int, _ b: Int) -> Int {
+        return a + b
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
