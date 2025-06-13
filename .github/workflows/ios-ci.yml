@@ -29,11 +29,11 @@ jobs:
       - name: Install dependencies
         run: bundle install
     
-      # # Run lane test
-      # - name: Run Fastlane tests
-      #   run: bundle exec fastlane test
-      #   env:
-      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+      # Run lane test
+      - name: Run Fastlane tests
+        run: bundle exec fastlane test
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
      
       # # Run lane build simulator
       # - name: Build app
@@ -55,11 +55,11 @@ jobs:
           security set-keychain-settings -t 3600 -l fastlane.keychain
           security default-keychain -s fastlane.keychain
 
-      # Match app store
-      - name: Match & Gym App Store
-        run: bundle exec fastlane match_and_gym
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+      # # Match app store
+      # - name: Match & Gym App Store
+      #   run: bundle exec fastlane match_and_gym
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
 
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
