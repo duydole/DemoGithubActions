@@ -35,8 +35,14 @@ jobs:
       #   env:
       #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
       
-      - name: Run SonarQube Scanner
-        uses: SonarSource/sonarqube-scan-action@v2.3.0
+      - name: Install Sonar Scanner
+        run: |
+          brew install sonar-scanner
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+
+      - name: Run SonarScanner
+        run: sonar-scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }} # Chỉ cần cho SonarCloud
