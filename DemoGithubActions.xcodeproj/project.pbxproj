@@ -17,6 +17,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F211DE5E2DFC14F5000ADB57 /* DemoGithubActions.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DemoGithubActions.xctestplan; sourceTree = "<group>"; };
 		F2D432D92DCA47AA00CDC273 /* DemoGithubActions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoGithubActions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D432EF2DCA47AB00CDC273 /* DemoGithubActionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoGithubActionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -68,6 +69,7 @@
 		F2D432D02DCA47AA00CDC273 = {
 			isa = PBXGroup;
 			children = (
+				F211DE5E2DFC14F5000ADB57 /* DemoGithubActions.xctestplan */,
 				F2D432DB2DCA47AA00CDC273 /* DemoGithubActions */,
 				F2D432F22DCA47AB00CDC273 /* DemoGithubActionsTests */,
 				F2D432DA2DCA47AA00CDC273 /* Products */,

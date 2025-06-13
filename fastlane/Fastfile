@@ -1,18 +1,3 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:ios)
 
 platform :ios do
@@ -22,12 +7,18 @@ platform :ios do
       scheme: "DemoGithubActions",
       clean: true
     )
+
+    slather(
+        scheme: "DemoGithubActions",
+        output_directory: "sonar-reports",
+        sonarqube_xml: true
+   )
   end
 
   desc "Build for iOS Simulator"
   lane :build_simulator do
     gym(
-      scheme: "DemoGithubActions", # Thay bằng scheme của bạn
+      scheme: "DemoGithubActions",
       clean: true,
       skip_codesigning: true,
       skip_archive: true,
@@ -89,4 +80,17 @@ platform :ios do
       skip_waiting_for_build_processing: true
     )
   end
+
+  lane :certificates do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+      duration: 1200,
+      in_house: false
+    )
+    match(type: "appstore", app_identifier: "com.livepayments.DemoGithubActions2", api_key: api_key)
+    match(type: "development", app_identifier: "com.livepayments.DemoGithubActions2", api_key: api_key)
+  end
+
 end
