@@ -35,6 +35,13 @@ jobs:
         env:
           DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
      
+     - name: Run SonarQube Scanner
+        uses: SonarSource/sonarqube-scan-action@v2.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }} # Chỉ cần cho SonarCloud
+
       # # Run lane build simulator
       # - name: Build app
       #   run: bundle exec fastlane build_simulator
