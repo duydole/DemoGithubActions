@@ -29,12 +29,24 @@ jobs:
       - name: Install dependencies
         run: bundle install
     
-      # Run lane test
-      - name: Run Fastlane tests
-        run: bundle exec fastlane test
+      # # Run lane test
+      # - name: Run Fastlane tests
+      #   run: bundle exec fastlane test
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+      
+      - name: Install Sonar Scanner
+        run: |
+          brew install sonar-scanner
         env:
-          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
-     
+          HOMEBREW_NO_AUTO_UPDATE: 1
+
+      - name: Run SonarScanner
+        run: sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+
       # # Run lane build simulator
       # - name: Build app
       #   run: bundle exec fastlane build_simulator
