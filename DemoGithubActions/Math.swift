@@ -145,4 +145,8 @@ class Math {
         guard b != 0 else { return nil }
         return a / b
     }
+    
+    static func hello() -> String {
+        "hello"
+    }
 }

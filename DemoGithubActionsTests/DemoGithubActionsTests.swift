@@ -33,4 +33,9 @@ struct DemoGithubActionsTests {
         let result = Math.divide(6, 3)
         #expect(result == 2)
     }
+    
+    @Test func testHelloWorld() async throws {
+        let result = Math.hello()
+        #expect(result == "hello")
+    }
 }
