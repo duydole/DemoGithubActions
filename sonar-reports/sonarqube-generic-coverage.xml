@@ -101,6 +101,19 @@
     <lineToCover lineNumber="138" covered="false"/>
     <lineToCover lineNumber="139" covered="false"/>
     <lineToCover lineNumber="140" covered="false"/>
+    <lineToCover lineNumber="152" covered="true"/>
+    <lineToCover lineNumber="153" covered="true"/>
+    <lineToCover lineNumber="154" covered="true"/>
+    <lineToCover lineNumber="156" covered="true"/>
+    <lineToCover lineNumber="157" covered="true"/>
+    <lineToCover lineNumber="158" covered="true"/>
+    <lineToCover lineNumber="160" covered="true"/>
+    <lineToCover lineNumber="161" covered="true"/>
+    <lineToCover lineNumber="162" covered="true"/>
+    <lineToCover lineNumber="164" covered="true"/>
+    <lineToCover lineNumber="165" covered="true"/>
+    <lineToCover lineNumber="166" covered="true"/>
+    <lineToCover lineNumber="167" covered="true"/>
   </file>
   <file path="DemoGithubActions/SceneDelegate.swift">
     <lineToCover lineNumber="15" covered="true"/>
