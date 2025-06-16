@@ -146,3 +146,23 @@ extension UserProfileManager.UserProfile: Codable {
         case id, name, email, age, lastUpdated
     }
 }
+
+//class Test2 {
+//    // Write methods about Math
+//    static func add(_ a: Int, _ b: Int) -> Int {
+//        return a + b
+//    }
+//    
+//    static func subtract(_ a: Int, _ b: Int) -> Int {
+//        return a - b
+//    }
+//    
+//    static func multiply(_ a: Int, _ b: Int) -> Int {
+//        return a * b
+//    }
+//    
+//    static func divide(_ a: Int, _ b: Int) -> Int? {
+//        guard b != 0 else { return nil }
+//        return a / b
+//    }
+//}
