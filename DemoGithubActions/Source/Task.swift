@@ -62,4 +62,8 @@ class Task {
     static func printDuy() -> String {
         return "Hello from Duy!"
     }
+    
+    static func returnZero() -> String {
+        return "0"
+    }
 }
