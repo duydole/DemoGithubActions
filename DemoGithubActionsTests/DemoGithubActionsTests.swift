@@ -38,4 +38,16 @@ struct DemoGithubActionsTests {
         let result = Math.hello()
         #expect(result == "hello")
     }
+    
+    @Test
+    func testTaskPrintHello() async throws {
+        let result = Task.printHello()
+        #expect(result == "Hello from Task class!")
+    }
+
+    @Test
+    func testTaskPrintHello2() async throws {
+        let result = Task.printDuy()
+        #expect(result == "Hello from Duy!")
+    }
 }
