@@ -50,4 +50,10 @@ struct DemoGithubActionsTests {
         let result = Task.printDuy()
         #expect(result == "Hello from Duy!")
     }
+    
+    @Test
+    func testTaskReturnZero() async throws {
+        let result = Task.returnZero()
+        #expect(result == "0")
+    }
 }

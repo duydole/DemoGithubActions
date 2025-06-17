@@ -136,9 +136,9 @@
     <lineToCover lineNumber="62" covered="true"/>
     <lineToCover lineNumber="63" covered="true"/>
     <lineToCover lineNumber="64" covered="true"/>
-    <lineToCover lineNumber="66" covered="false"/>
-    <lineToCover lineNumber="67" covered="false"/>
-    <lineToCover lineNumber="68" covered="false"/>
+    <lineToCover lineNumber="66" covered="true"/>
+    <lineToCover lineNumber="67" covered="true"/>
+    <lineToCover lineNumber="68" covered="true"/>
   </file>
   <file path="DemoGithubActions/ViewController.swift">
     <lineToCover lineNumber="12" covered="true"/>
