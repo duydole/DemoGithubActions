@@ -54,4 +54,12 @@ class Task {
         let components = calendar.dateComponents([.day], from: Date(), to: dueDate)
         return components.day
     }
+    
+    static func printHello() {
+        print("Hello from Task class!")
+    }
+    
+    static func printDuy() {
+        print("Hello from Duy!")
+    }
 }
