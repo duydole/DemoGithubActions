@@ -55,11 +55,11 @@ class Task {
         return components.day
     }
     
-    static func printHello() {
-        print("Hello from Task class!")
+    static func printHello() -> String {
+        return "Hello from Task class!"
     }
     
-    static func printDuy() {
-        print("Hello from Duy!")
+    static func printDuy() -> String {
+        return "Hello from Duy!"
     }
 }
