@@ -1,0 +1,96 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Run tests"
+  lane :test do
+    scan(
+      scheme: "DemoGithubActions",
+      clean: true
+    )
+
+    slather(
+        scheme: "DemoGithubActions",
+        output_directory: "sonar-reports",
+        sonarqube_xml: true
+   )
+  end
+
+  desc "Build for iOS Simulator"
+  lane :build_simulator do
+    gym(
+      scheme: "DemoGithubActions",
+      clean: true,
+      skip_codesigning: true,
+      skip_archive: true,
+      destination: "platform=iOS Simulator,name=iPhone 16,OS=18.2",
+      configuration: "Debug",
+      xcargs: "CODE_SIGN_IDENTITY='' CODE_SIGNING_REQUIRED=NO"
+    )
+  end
+  
+  desc "Match & Gym App Store"
+  lane :match_and_gym do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+      duration: 1200,
+      in_house: false
+    )
+    match(
+      type: "appstore",
+      app_identifier: "com.livepayments.DemoGithubActions2",
+      api_key: api_key,
+      verbose: true
+    )
+    
+    gym(
+      scheme: "DemoGithubActions",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "DemoGithubActions.ipa",
+      clean: true
+    )
+  end
+
+  desc "Build and upload to TestFlight"
+  lane :build_and_tf do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+      duration: 1200,
+      in_house: false
+    )
+    match(
+      type: "appstore",
+      app_identifier: "com.livepayments.DemoGithubActions2",
+      api_key: api_key,
+      verbose: true
+    )
+    gym(
+      scheme: "DemoGithubActions",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "DemoGithubActions.ipa",
+      clean: true
+    )
+    pilot(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  lane :certificates do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APP_STORE_CONNECT_API_KEY_ID"],
+      issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+      key_content: ENV["APP_STORE_CONNECT_API_KEY"],
+      duration: 1200,
+      in_house: false
+    )
+    match(type: "appstore", app_identifier: "com.livepayments.DemoGithubActions2", api_key: api_key)
+    match(type: "development", app_identifier: "com.livepayments.DemoGithubActions2", api_key: api_key)
+  end
+
+end

@@ -1,0 +1,81 @@
+name: iOS CI
+
+# Trigger the workflow when push or having new PR to main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    # Specify macos version
+    runs-on: macos-15
+
+    steps:
+      # Clone the source code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Select the Ruby version
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+              
+      # Install fastlane to CI machine
+      - name: Install dependencies
+        run: bundle install
+    
+      # Run lane test
+      - name: Run Fastlane tests
+        run: bundle exec fastlane test
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+      
+      - name: Install Sonar Scanner
+        run: |
+          brew install sonar-scanner
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+
+      - name: Run SonarScanner
+        run: sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+
+      # # Run lane build simulator
+      # - name: Build app
+      #   run: bundle exec fastlane build_simulator
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+
+      # # Run lane build and tf
+      # - name: Build and TF
+      #   run: bundle exec fastlane build_and_tf
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+
+      # Create and configure Keychain
+      - name: Setup Keychain
+        run: |
+          security create-keychain -p "${{ secrets.MATCH_KEYCHAIN_PASSWORD }}" fastlane.keychain
+          security unlock-keychain -p "${{ secrets.MATCH_KEYCHAIN_PASSWORD }}" fastlane.keychain
+          security set-keychain-settings -t 3600 -l fastlane.keychain
+          security default-keychain -s fastlane.keychain
+
+      # # Match app store
+      # - name: Match & Gym App Store
+      #   run: bundle exec fastlane match_and_gym
+      #   env:
+      #     DEVELOPER_DIR: /Applications/Xcode_16.2.app/Contents/Developer
+
+    env:
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+      APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+      APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+      APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}

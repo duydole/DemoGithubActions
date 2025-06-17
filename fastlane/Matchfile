@@ -1,0 +1,5 @@
+git_url("https://github.com/duydole/ios-certs")
+storage_mode("git")
+type("appstore")
+app_identifier("com.livepayments.DemoGithubActions2")
+git_basic_authorization(Base64.strict_encode64("duydole:#{ENV['GIT_TOKEN']}"))
